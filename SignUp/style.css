@@ -86,15 +86,28 @@ h2{
     visibility: visible;
 }
 
-.form button {
+.buttonsubmit {
     cursor: pointer;
     background-color: #3498db;
     border-color:  #3498db;
     border-radius: 4px;
     color: #fff;
-    display: block;
+    display: inline-block;
     font-size: 16px;
     padding:10px;
-    margin-top: 20px;
-    width: 100%;
+    margin: 10px;
+    width: 40%;
+}
+
+.buttonreset {
+    cursor: pointer;
+    background-color: orange;
+    border-color:  orange;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    padding:10px;
+    margin: 10px;
+    width: 40%;    
 }

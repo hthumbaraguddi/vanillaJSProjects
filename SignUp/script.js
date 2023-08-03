@@ -3,6 +3,7 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 =document.getElementById('confirmPassword');
+const address = document.getElementById('address');
 
 function  showError(input,message){
     const formControl = input.parentElement;
@@ -18,7 +19,9 @@ function showSuccess(input){
 
 
 function ValidateEmail (str) {
-    return typeof str==='string' && /^[\w+\d+._]+\@[\w+\d+_+]+\.[\w+\d+._]{2,8}$/.test(str);
+    const emailRegex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
+    return emailRegex.test(str);
+    //return typeof str==='string' && /^[\w+\d+._]+\@[\w+\d+_+]+\.[\w+\d+._]{2,8}$/.test(str);
 }
 
 function getFieldName(input){
@@ -43,6 +46,7 @@ function checkLenth(input,min, max){
     }
 }
 function checkEmail(){
+    console.log(email.value);
     if(email.value===''){
         showError(email, "email is required")
     }else if(!ValidateEmail(email.value.trim())){
@@ -51,11 +55,12 @@ function checkEmail(){
     else{
         showSuccess(email);
     }
+    
 
 }
 
 function checkPasswordMatch(password,password2){
-    if(password.value===password2.value){
+    if(password.value!=='' && password.value===password2.value){
         showSuccess(password2);
     }else{
        
@@ -64,13 +69,19 @@ function checkPasswordMatch(password,password2){
 }
 form.addEventListener('submit', function(e){
     e.preventDefault();
-    console.log(username.value);
-
-    checkRequired([username,email,password,confirmPassword]);
-
+    checkRequired([username,email,password,confirmPassword,address]);
+    checkEmail(email);
     checkLenth(username, 3, 15);
     checkLenth(password,3,25);
     checkLenth(password2,3,25);
     checkPasswordMatch(password,password2);
-
 })
+
+
+function resetForm(){
+        [username,email,password,confirmPassword, email,address].forEach(input => {
+        const formControl = input.parentElement;
+        formControl.className ='form-control';
+    });
+    document.getElementById("reset").reset();
+}
