@@ -21,7 +21,6 @@ function showSuccess(input){
 function ValidateEmail (str) {
     const emailRegex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
     return emailRegex.test(str);
-    //return typeof str==='string' && /^[\w+\d+._]+\@[\w+\d+_+]+\.[\w+\d+._]{2,8}$/.test(str);
 }
 
 function getFieldName(input){
